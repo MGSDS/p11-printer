@@ -15,7 +15,7 @@
   import { DEFAULT_LABEL_PRESETS } from "$/defaults";
   import { onMount, tick } from "svelte";
   import { LocalStoragePersistence } from "$/utils/persistence";
-  import type { PrintDirection } from "$/lib/fichero";
+  import type { PrintDirection } from "$/lib/p11";
   import MdIcon from "$/components/basic/MdIcon.svelte";
   import { Toasts } from "$/utils/toasts";
   import { FileUtils } from "$/utils/file_utils";

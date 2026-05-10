@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Utils } from "$/lib/fichero";
+  import { Utils } from "$/lib/p11";
   import { tr } from "$/utils/i18n";
   import MdIcon from "$/components/basic/MdIcon.svelte";
   import { detectAntiFingerprinting } from "$/utils/browsers";

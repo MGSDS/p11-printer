@@ -2,7 +2,7 @@
   import AppModal from "$/components/basic/AppModal.svelte";
   import { appConfig } from "$/stores";
   import { tr } from "$/utils/i18n";
-  import { FICHERO_CLIENT_DEFAULTS } from "$/lib/fichero";
+  import { P11_CLIENT_DEFAULTS } from "$/lib/p11";
 
   let { show = $bindable() } = $props();
 </script>
@@ -17,7 +17,7 @@
       class="form-control"
       type="number"
       min="1"
-      placeholder={`${FICHERO_CLIENT_DEFAULTS.packetIntervalMs}`}
+      placeholder={`${P11_CLIENT_DEFAULTS.packetIntervalMs}`}
       bind:value={$appConfig.packetIntervalMs} />
     <span class="input-group-text">ms</span>
     <button class="btn btn-outline-secondary" onclick={() => ($appConfig.packetIntervalMs = undefined)}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { FirmwareProgressEvent } from "$/lib/fichero";
+  import type { FirmwareProgressEvent } from "$/lib/p11";
   import { printerClient } from "$/stores";
   import { Toasts } from "$/utils/toasts";
   import { FileUtils } from "$/utils/file_utils";

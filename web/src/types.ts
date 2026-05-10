@@ -1,4 +1,4 @@
-import { LabelType, printTaskNames } from "$/lib/fichero";
+import { LabelType, printTaskNames } from "$/lib/p11";
 import * as fabric from "fabric";
 import { z } from "zod";
 

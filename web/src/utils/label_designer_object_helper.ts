@@ -139,7 +139,7 @@ export class LabelDesignerObjectHelper {
 
   static addQrCode(canvas: fabric.Canvas): QRCode {
     const qr = new QRCode({
-      text: "Fichero",
+      text: "P11",
       ...OBJECT_SIZE_DEFAULTS,
       ...OBJECT_DEFAULTS,
     });

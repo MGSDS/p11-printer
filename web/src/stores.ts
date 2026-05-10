@@ -17,11 +17,11 @@ import {
   Utils,
   instantiateClient,
   type HeartbeatData,
-  type FicheroClient,
+  type P11Client,
   type PrinterInfo,
   type PrinterModelMeta,
   type RfidInfo,
-} from "$/lib/fichero";
+} from "$/lib/p11";
 import { Toasts } from "$/utils/toasts";
 import { tr } from "$/utils/i18n";
 import { LocalStoragePersistence, writablePersisted } from "$/utils/persistence";
@@ -37,7 +37,7 @@ export const loadedFonts = writable<FontFace[]>([]);
 
 export const connectionState = writable<ConnectionState>("disconnected");
 export const connectedPrinterName = writable<string>("");
-export const printerClient = writable<FicheroClient>();
+export const printerClient = writable<P11Client>();
 export const heartbeatData = writable<HeartbeatData>();
 export const printerInfo = writable<PrinterInfo>();
 export const rfidInfo = writable<RfidInfo | undefined>();
@@ -75,8 +75,8 @@ export const refreshRfidInfo = () => {
 };
 
 export const initClient = () => {
-  printerClient.update((prevClient: FicheroClient) => {
-    let newClient: FicheroClient = prevClient;
+  printerClient.update((prevClient: P11Client) => {
+    let newClient: P11Client = prevClient;
 
     if (prevClient !== undefined) {
       prevClient.disconnect();

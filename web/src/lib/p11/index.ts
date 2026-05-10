@@ -1,4 +1,4 @@
-export { FICHERO_CLIENT_DEFAULTS } from "./constants";
+export { P11_CLIENT_DEFAULTS } from "./constants";
 
 export {
   LabelType,
@@ -29,7 +29,7 @@ export { ImageEncoder } from "./image_encoder";
 export { AbstractPrintTask } from "./print_task";
 
 export {
-  FicheroClient,
-  FicheroBluetoothClient,
+  P11Client,
+  P11BluetoothClient,
   instantiateClient,
 } from "./client";

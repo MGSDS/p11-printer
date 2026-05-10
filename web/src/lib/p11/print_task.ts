@@ -22,7 +22,7 @@ type SendFn = (data: readonly number[] | number[] | Uint8Array, wait?: boolean, 
 type SendChunkedFn = (data: Uint8Array) => Promise<void>;
 type EmitProgressFn = (event: PrintProgressEvent) => void;
 
-export class FicheroPrintTask extends AbstractPrintTask {
+export class P11PrintTask extends AbstractPrintTask {
   private opts: PrintTaskOptions;
   private sendCmd: SendFn;
   private sendChunked: SendChunkedFn;

@@ -23,6 +23,6 @@ export const CMD = {
   factoryReset: [0x10, 0xff, 0x04],
 } as const;
 
-export const FICHERO_CLIENT_DEFAULTS = {
+export const P11_CLIENT_DEFAULTS = {
   packetIntervalMs: 20,
 } as const;

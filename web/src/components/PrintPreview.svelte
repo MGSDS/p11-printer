@@ -12,7 +12,7 @@
     type PrintTaskName,
     AbstractPrintTask,
     Utils,
-  } from "$/lib/fichero";
+  } from "$/lib/p11";
   import type { LabelProps, PostProcessType, FabricJson, PreviewProps, PreviewPropsOffset } from "$/types";
   import ParamLockButton from "$/components/basic/ParamLockButton.svelte";
   import { tr, type TranslationKey } from "$/utils/i18n";

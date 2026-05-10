@@ -18,7 +18,7 @@
   <div class="row align-items-center mb-3">
     <div class="col">
       <h1 class="title">
-        <img src="{import.meta.env.BASE_URL}logo.png" alt="Fichero" class="logo" />
+        <img src="{import.meta.env.BASE_URL}logo.png" alt="P11" class="logo" />
       </h1>
     </div>
     <div class="col-md-3">

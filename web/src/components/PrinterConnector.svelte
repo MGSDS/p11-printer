@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SoundSettingsItemType, Utils, type AvailableTransports } from "$/lib/fichero";
+  import { SoundSettingsItemType, Utils, type AvailableTransports } from "$/lib/p11";
   import {
     printerClient,
     connectedPrinterName,

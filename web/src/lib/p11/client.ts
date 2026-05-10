@@ -8,7 +8,7 @@ import {
 } from "./constants";
 import { TypedEventEmitter } from "./emitter";
 import { Utils } from "./utils";
-import { FicheroPrintTask } from "./print_task";
+import { P11PrintTask } from "./print_task";
 import type {
   ConnectionInfo,
   HeartbeatData,
@@ -43,7 +43,7 @@ function makePacket(data: readonly number[] | number[] | Uint8Array): Packet {
   };
 }
 
-export class FicheroClient extends TypedEventEmitter<ClientEventMap> {
+export class P11Client extends TypedEventEmitter<ClientEventMap> {
   private device: BluetoothDevice | null = null;
   private writeChar: BluetoothRemoteGATTCharacteristic | null = null;
   private notifyChar: BluetoothRemoteGATTCharacteristic | null = null;
@@ -66,7 +66,7 @@ export class FicheroClient extends TypedEventEmitter<ClientEventMap> {
         statusTimeoutMs: number;
       },
     ) => {
-      return new FicheroPrintTask(
+      return new P11PrintTask(
         opts,
         (data, wait, timeout) => this.sendCommand(data, wait, timeout),
         (data) => this.sendChunked(data),
@@ -75,7 +75,7 @@ export class FicheroClient extends TypedEventEmitter<ClientEventMap> {
     },
 
     printEnd: async () => {
-      // No-op for D11s - stop is handled per-copy in print task
+      // No-op for P11 - stop is handled per-copy in print task
     },
 
     printerReset: async () => {
@@ -91,7 +91,7 @@ export class FicheroClient extends TypedEventEmitter<ClientEventMap> {
     },
 
     setSoundEnabled: async (_type: number, _enabled: boolean) => {
-      // Not supported on D11s
+      // Not supported on P11
     },
 
     firmwareUpgrade: async (_data: Uint8Array, _version: string) => {
@@ -104,7 +104,7 @@ export class FicheroClient extends TypedEventEmitter<ClientEventMap> {
 
     try {
       device = await navigator.bluetooth.requestDevice({
-        filters: [{ namePrefix: "FICHERO" }, { namePrefix: "D11s_" }],
+        filters: [{ namePrefix: "P11_" }],
         optionalServices: [SERVICE_UUID],
       });
     } catch {
@@ -254,7 +254,7 @@ export class FicheroClient extends TypedEventEmitter<ClientEventMap> {
 
   getModelMetadata(): PrinterModelMeta {
     return {
-      model: this.info.modelId ?? "D11s",
+      model: this.info.modelId ?? "P11-GZP",
       printheadPixels: 96,
       printDirection: "left" as const,
       densityMin: 0,
@@ -302,8 +302,8 @@ export class FicheroClient extends TypedEventEmitter<ClientEventMap> {
   }
 }
 
-export class FicheroBluetoothClient extends FicheroClient {}
+export class P11BluetoothClient extends P11Client {}
 
-export function instantiateClient(_type?: string): FicheroClient {
-  return new FicheroBluetoothClient();
+export function instantiateClient(_type?: string): P11Client {
+  return new P11BluetoothClient();
 }

@@ -20,7 +20,7 @@ export const configureFabric = () => {
 
 /** Default presets for LabelPropsEditor */
 export const DEFAULT_LABEL_PRESETS: LabelPreset[] = [
-  // D11s 203dpi
+  // P11 203dpi
   { width: 29, height: 12, unit: "mm", dpmm: 8, printDirection: "left", shape: "rect", title: "29x12mm" },
   { width: 40, height: 12, unit: "mm", dpmm: 8, printDirection: "left", shape: "rect" },
   { width: 50, height: 30, unit: "mm", dpmm: 8, printDirection: "top", shape: "rect" },
