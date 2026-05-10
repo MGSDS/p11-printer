@@ -1,16 +1,27 @@
 # p11-printer
 
-Python CLI and library for the P11 Bluetooth thermal label printer (LeMinyun / Xiamen Lexi Electronic Technology).
+Disclaimer: documentrarion adaptation done by AI
 
-Reverse-engineered by BLE sniffing the LeMinyun Android app. Based on [fichero-printer](https://github.com/0xMH/fichero-printer) (same AiYin/LuckPrinter SDK internals).
+Python CLI and library for the **P11 Bluetooth thermal label printer** (LeMinyun / Xiamen Lexi Electronic Technology).
+
+Forked from [fichero-printer](https://github.com/0xMH/fichero-printer) by [@0xMH](https://github.com/0xMH) — all protocol reverse-engineering credit goes to them. This fork adapts the library specifically for the P11-GZP printer and adds a `print_raster` convenience method.
+
+## Changes from upstream
+
+- Package renamed `fichero` → `p11`, CLI command `fichero` → `p11`
+- BLE service changed from `18f0` to `ff00` (`ff02`/`ff01`) — required for P11
+- `set_paper_type` sends fire-and-forget (P11 does not ACK this command)
+- `print_raster(img)` method added — accepts a PIL Image, handles GS v 0 encoding internally
+- Classic Bluetooth (RFCOMM) transport removed — P11 uses BLE only
+- Name prefix filter changed to `P11_`
 
 ## The printer
 
 - Model: `P11-GZP`, BLE name: `P11_XXXX`
+- Android app: LeMinyun Print (`com.lexi.print`)
 - 96px wide printhead, 203 DPI
 - 14mm × 30mm self-adhesive labels (96×240 dots)
-- BLE only (macOS/Linux/Windows via `bleak`)
-- Android app: LeMinyun Print (`com.lexi.print`)
+- BLE service: `ff00`, write: `ff02`, notify: `ff01`
 
 ## Setup
 
@@ -66,11 +77,12 @@ asyncio.run(main())
 
 ## Protocol notes
 
-- BLE service: `ff00`, write: `ff02`, notify: `ff01`
-- Image command: `GS v 0` raster (ESC * does NOT work over BLE)
-- Eject: `1D 0C` (GS FF)
-- `set_paper_type` (`10 FF 84 00`) fires without ACK — P11 does not respond to it
-- `stop_print` (`10 FF FE 45`) returns `OK`
+- Image command: `GS v 0` raster (ESC * does NOT work over BLE on P11)
+- Eject: `1D 0C` (GS FF) — same as D11s
+- `set_paper_type` (`10 FF 84 00`) — P11 executes it silently, no ACK
+- `stop_print` (`10 FF FE 45`) — returns `OK`
+
+See [docs/PROTOCOL.md](docs/PROTOCOL.md) for the full command reference (from upstream, verified against D11s; P11 differences noted above).
 
 ## License
 
