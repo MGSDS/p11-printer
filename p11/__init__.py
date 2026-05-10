@@ -1,25 +1,21 @@
-"""Fichero D11s thermal label printer - BLE + Classic Bluetooth interface."""
+"""P11 thermal label printer - BLE interface."""
 
-from fichero.printer import (
-    RFCOMM_CHANNEL,
+from p11.printer import (
     PrinterClient,
     PrinterError,
     PrinterNotFound,
     PrinterNotReady,
     PrinterStatus,
     PrinterTimeout,
-    RFCOMMClient,
     connect,
 )
 
 __all__ = [
-    "RFCOMM_CHANNEL",
     "PrinterClient",
     "PrinterError",
     "PrinterNotFound",
     "PrinterNotReady",
     "PrinterStatus",
     "PrinterTimeout",
-    "RFCOMMClient",
     "connect",
 ]

@@ -5,7 +5,7 @@ import logging
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
-from fichero.printer import PRINTHEAD_PX
+from p11.printer import PRINTHEAD_PX
 
 log = logging.getLogger(__name__)
 
